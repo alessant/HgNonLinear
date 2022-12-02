@@ -5,16 +5,16 @@ using Statistics
 using Distributions
 using PyPlot
 
-path = "data/ps-thr5.data"
+path = "data/Sociopatterns/Processed_data/aggr_0.33min_cliques_thr5_LyonSchool.hg"
 hg, nodes_id_mapping, nodes_per_edge = build_hg(path)
 size(hg)
 
 function s_one(x)
     lambda = -1
    # return ℯ^(lambda * x)
-    if x <= 0.05#0.20#0.4#
+    if x <= 0.15#0.20#0.4#
         ℯ^(lambda * x)
-    elseif x >= 0.07#0.6#0.80#
+    elseif x >= 0.3#0.6#0.80#
         - ℯ^(lambda * x)
     else
         0.0

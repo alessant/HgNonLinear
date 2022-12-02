@@ -1,4 +1,6 @@
 function build_hg(path)
+
+    
     df = CSV.read(path, DataFrame; delim="],", header=0)
 
     nodes = Dict{Int,Int}()
@@ -7,6 +9,7 @@ function build_hg(path)
     hg = Hypergraph(0,0)
 
     for he in eachcol(df)
+      
         #remove characters [] from string
         #println(he[:1])
         d = split(he[:1], ",")
@@ -27,6 +30,7 @@ function build_hg(path)
         he_id = add_hyperedge!(hg; vertices = vertices)
         push!(nodes_per_edge, he_id => vs)
     end
+
 
     return hg, nodes, nodes_per_edge
 end
